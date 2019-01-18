@@ -15,10 +15,20 @@ public class Tests {
         WindowsDriver driver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
-        driver.findElementByName("View").click();
-        Thread.sleep(2000);
+        driver.findElementByName("Text Editor").sendKeys("Hello World");
+
+        Thread.sleep(1000);
         driver.findElementByName("File").click();
-        Thread.sleep(2000);
+        driver.findElementByName("Save As...").click();
+        Thread.sleep(1000);
+        driver.findElementByName("File name:").clear();
+        Thread.sleep(1000);
+        driver.findElementByAccessibilityId("FileNameControlHost").sendKeys("hello.txt");
+        Thread.sleep(1000);
+        driver.findElementByName("Save").click();
+
+
+        Thread.sleep(3000);
         driver.quit();
 
     }
